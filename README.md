@@ -8,7 +8,7 @@ Send push notifications from Home Assistant directly to your [HAHome](https://ha
 
 HAHome registers itself with Home Assistant as a mobile device (via the standard `mobile_app` platform). This integration detects your registered HAHome devices and lets you configure notification triggers — no server, no extra accounts, no complex setup.
 
-Notifications are delivered via Apple Push Notification service (APNs) through your own Cloudflare Worker, keeping everything under your control.
+Notifications are delivered via Home Assistant's built-in mobile_app platform — no additional server or account required.
 
 ```
 Home Assistant → HAHome Integration → notify.mobile_app_* → APNs → HAHome on iPhone
@@ -27,7 +27,7 @@ Home Assistant → HAHome Integration → notify.mobile_app_* → APNs → HAHom
 1. Open HACS in Home Assistant
 2. Go to **Integrations**
 3. Click the three dots → **Custom repositories**
-4. Add `https://github.com/hahome/ha-integration` as an **Integration**
+4. Add `https://github.com/hahome-app/ha-integration` as an **Integration**
 5. Search for **HAHome** and install it
 6. Restart Home Assistant
 
@@ -49,14 +49,23 @@ Your device is now set up. Open the integration options to add notification trig
 
 ## Notification triggers
 
-After setup, press **Configure** on the integration to add triggers. The following trigger types are supported:
+After setup, press **Configure** on the integration to add triggers.
+
+### Quick triggers
 
 | Trigger | Description |
 |---|---|
-| State change | Fires when an entity changes state, optionally filtered by from/to state |
+| Motion detected | Fires when a motion sensor turns on |
+| Door / window opened | Fires when a door or window sensor opens |
+| Battery low | Fires when a battery sensor drops below a threshold |
+| Device unavailable | Fires when any entity becomes unavailable |
+
+### Advanced triggers
+
+| Trigger | Description |
+|---|---|
+| State change | Fires when an entity changes state, optionally filtered by from/to value |
 | Numeric threshold | Fires when a numeric sensor crosses above or below a value |
-| Sunrise / Sunset | Fires at sunrise or sunset, with optional offset in minutes |
-| Scheduled time | Fires every day at a specific time |
 
 Each trigger has a configurable **title** and **message** for the notification.
 
@@ -66,7 +75,7 @@ Once set up, HAHome devices are also available as standard notify services in au
 
 ```yaml
 action:
-  - service: notify.mobile_app_davids_iphone
+  - service: notify.mobile_app_hahome_johns_iphone
     data:
       title: "Motion detected"
       message: "Someone is at the front door"
@@ -88,4 +97,4 @@ Check Home Assistant logs at **Settings → System → Logs** and search for `ha
 ## Links
 
 - [HAHome website](https://hahome.io)
-- [Report an issue](https://github.com/hahome/ha-integration/issues)
+- [Report an issue](https://github.com/hahome-app/ha-integration/issues)
