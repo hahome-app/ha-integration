@@ -1,0 +1,81 @@
+{
+  "title": "HAHome",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Select your HAHome device",
+        "description": "Choose the HAHome device registered with Home Assistant.",
+        "data": {
+          "webhook_id": "Device"
+        }
+      },
+      "no_devices": {
+        "title": "No HAHome device found",
+        "description": "{instructions}",
+        "data": {}
+      }
+    },
+    "abort": {
+      "already_configured": "This HAHome device is already configured."
+    },
+    "error": {}
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Notification triggers — {device}",
+        "description": "{count} trigger(s) configured. Add or remove triggers below.",
+        "data": {
+          "action": "Action"
+        }
+      },
+      "add_trigger": {
+        "title": "Add trigger — choose type",
+        "data": {
+          "type": "Trigger type"
+        }
+      },
+      "trigger_state": {
+        "title": "State change trigger",
+        "data": {
+          "entity_id": "Entity ID (e.g. binary_sensor.front_door)",
+          "to_state": "To state (leave blank for any)",
+          "from_state": "From state (leave blank for any)",
+          "title": "Notification title",
+          "message": "Notification message"
+        }
+      },
+      "trigger_numeric": {
+        "title": "Numeric threshold trigger",
+        "data": {
+          "entity_id": "Entity ID (e.g. sensor.temperature)",
+          "above": "Above value (optional)",
+          "below": "Below value (optional)",
+          "title": "Notification title",
+          "message": "Notification message"
+        }
+      },
+      "trigger_sun": {
+        "title": "Sunrise / Sunset trigger",
+        "data": {
+          "event": "Event",
+          "offset_minutes": "Offset in minutes (negative = before)",
+          "title": "Notification title",
+          "message": "Notification message"
+        }
+      },
+      "trigger_time": {
+        "title": "Scheduled time trigger",
+        "data": {
+          "at": "Time (HH:MM or HH:MM:SS)",
+          "title": "Notification title",
+          "message": "Notification message"
+        }
+      }
+    },
+    "error": {
+      "above_or_below_required": "Specify at least one of: above or below.",
+      "required": "This field is required."
+    }
+  }
+}
