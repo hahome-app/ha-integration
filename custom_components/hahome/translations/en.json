@@ -1,0 +1,97 @@
+{
+  "title": "HAHome",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Select your HAHome device",
+        "description": "Choose the HAHome device registered with Home Assistant.",
+        "data": {
+          "webhook_id": "Device"
+        }
+      },
+      "no_devices": {
+        "title": "No HAHome device found",
+        "description": "Open HAHome on your iPhone and complete the Home Assistant connection. The app registers itself automatically. Then come back and press Submit.",
+        "data": {}
+      }
+    },
+    "abort": {
+      "already_configured": "This HAHome device is already configured."
+    },
+    "error": {}
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Notification triggers — {device}",
+        "description": "{count} trigger(s) configured. Add or remove triggers below.",
+        "data": {
+          "action": "Action"
+        }
+      },
+      "pick_trigger_type": {
+        "title": "Add trigger — choose type",
+        "data": {
+          "type": "Trigger type"
+        }
+      },
+      "quick_motion": {
+        "title": "Motion detected",
+        "data": {
+          "entity_id": "Motion sensor",
+          "title": "Notification title",
+          "message": "Notification message"
+        }
+      },
+      "quick_door": {
+        "title": "Door / window opened",
+        "data": {
+          "entity_id": "Door or window sensor",
+          "title": "Notification title",
+          "message": "Notification message"
+        }
+      },
+      "quick_battery": {
+        "title": "Battery low",
+        "data": {
+          "entity_id": "Battery sensor",
+          "threshold": "Notify below (%)",
+          "title": "Notification title",
+          "message": "Notification message"
+        }
+      },
+      "quick_unavailable": {
+        "title": "Device unavailable",
+        "data": {
+          "entity_id": "Entity to monitor",
+          "title": "Notification title",
+          "message": "Notification message"
+        }
+      },
+      "trigger_state": {
+        "title": "State change trigger",
+        "data": {
+          "entity_id": "Entity",
+          "to_state": "To state (leave blank for any)",
+          "from_state": "From state (leave blank for any)",
+          "title": "Notification title",
+          "message": "Notification message"
+        }
+      },
+      "trigger_numeric": {
+        "title": "Numeric threshold trigger",
+        "data": {
+          "entity_id": "Sensor entity",
+          "above": "Above value (optional)",
+          "below": "Below value (optional)",
+          "title": "Notification title",
+          "message": "Notification message"
+        }
+      }
+    },
+    "error": {
+      "above_or_below_required": "Specify at least one of: above or below.",
+      "required": "This field is required."
+    }
+  }
+}
